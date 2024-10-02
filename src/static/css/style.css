@@ -1,0 +1,88 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #202020;
+  color: #fff;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  box-shadow: 1px 1px 16px rgba(20, 20, 20, .5);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem 1rem; 
+}
+
+.container form {
+  display: flex;
+}
+
+.container input {
+  border: none;
+  padding: .5rem;
+  border-radius: 1rem 0 0 1rem;
+}
+
+form button {
+  border: none;
+  padding: 0 1rem;
+  background-color: rgba(20, 20, 20, .8);
+  color: unset;
+  border-radius: 0 1rem 1rem 0;
+}
+
+#listTasks {
+  width: 90%;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+#listTasks li {
+  max-width: 200px; 
+  padding: 1rem;
+  background-color: rgba(20, 20, 20, .4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 1rem;
+}
+
+li div {
+  display: flex;
+  gap: 1rem;
+}
+
+li div a {
+  border: none;
+  padding: .5rem 1rem;
+  border-radius: .6rem;
+  cursor: pointer;
+}
+
+li div a:first-child {
+  background-color: rgba(0, 100, 200, .6);
+}
+
+li div a:last-child {
+  background-color: rgba(200, 0, 0, .6);
+}
