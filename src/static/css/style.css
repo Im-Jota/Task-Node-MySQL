@@ -37,6 +37,12 @@ body {
   border: none;
   padding: .5rem;
   border-radius: 1rem 0 0 1rem;
+  background-color: rgba(100, 100, 100, .2);
+  color: rgba(250, 250, 250, .8);
+}
+
+.container input:focus {
+  outline: none;
 }
 
 form button {
@@ -57,9 +63,9 @@ form button {
 }
 
 #listTasks li {
-  max-width: 200px; 
+  max-width: 300px; 
   padding: 1rem;
-  background-color: rgba(20, 20, 20, .4);
+  background-color: rgba(20, 20, 20, .6);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -74,7 +80,7 @@ li div {
 
 li div a {
   border: none;
-  padding: .5rem 1rem;
+  padding: .5rem 2rem;
   border-radius: .6rem;
   cursor: pointer;
 }

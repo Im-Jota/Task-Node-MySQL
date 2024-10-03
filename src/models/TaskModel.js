@@ -12,6 +12,18 @@ class Task {
       callback(null, data)
     })
   }
+
+  setTask(task, callback){
+    const insert = 'insert into task (name, state, create_at, update_at, delete_at) values (?, ?, ?, ?, ?)';
+    const now = new Date();
+    connection.query(insert, [task, 0, now, now, now], (error, result) => {
+      if(error) {
+        callback(error, null)
+      } else {
+        callback(null, result)
+      }
+    })
+  }
 }
 
 module.exports = Task

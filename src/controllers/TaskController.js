@@ -14,6 +14,25 @@ class TaskController{
       res.end();
     })
   }
+
+  setTask(req, res) {
+    let data = '';
+    req.on('data', (buffer) => {
+      data += buffer.toString();
+    })
+    req.on('end', () => {
+      const { name } = JSON.parse(data)
+      this._task.setTask(name, (error, response) => {
+        if (error) {
+          res.writeHeader(500, {'Content-Type':'text/plain'});
+          res.end(error);
+        } else {
+          res.statusCode = 200;
+          res.end('Exito');
+        }
+      })
+    })
+  }
 }
 
 
