@@ -15,8 +15,11 @@ function tasksRoutes(req, res){
       case 'GET':
         taskController.getTask(req, res);
         break;
+      case 'PUT':
+        taskController.updateName(req, res);
+        break;
       case 'PATCH':
-        taskController.updateTask(req, res);
+        taskController.updateState(req, res);
         break;
       case 'DELETE':
         taskController.deleteTask(req, res);
