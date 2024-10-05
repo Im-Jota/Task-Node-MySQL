@@ -84,7 +84,50 @@ function createTask(e, ul) {
   task.value = '';
 }
 
-function editTask (id) {
+async function editTask (id) {
+  const app = document.getElementById('app');
+  const modal = document.createElement('div');
+
+  const data = await fetch(`/tasks/${id}`)
+               .then(response => response.json())
+               .then(data => data);
+
+  const form = document.createElement('form');
+  form.innerHTML = `
+  <input placeholder="update task" value="${data[0].name}" name="task">
+  `;
+
+  const div = document.createElement('div');
+  div.innerHTML = `
+  <a href="/tasks/${id}">Update</a>
+  `;
+
+  const cancel = document.createElement('a');
+  cancel.innerText = 'Cancel';
+
+  div.appendChild(cancel);
+  form.appendChild(div);
+
+  modal.classList.add('modal');
+  modal.appendChild(form);
+  app.appendChild(modal);
+
+  cancel.addEventListener('click', () => {
+    closeModal(app, modal);
+  })
+
+  modal.addEventListener('click', (e) => {
+    if(e.target.className == 'modal') {
+      closeModal(app, modal);
+    }
+  })
+};
+
+function closeModal (app, modal) {
+  app.removeChild(modal);
+}
+
+function updateName(id) {
 
 }
 
