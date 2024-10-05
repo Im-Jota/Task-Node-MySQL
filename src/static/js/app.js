@@ -48,9 +48,9 @@ async function loadTasks(ul) {
     span.innerText = data.name;
 
     const div = document.createElement('div');
-    const btnEdit = document.createElement('a');
+    const btnEdit = document.createElement('button');
     btnEdit.innerText = 'Edit';
-    const btnDelete = document.createElement('a');
+    const btnDelete = document.createElement('button');
     btnDelete.innerText = 'Delete';
 
     div.appendChild(btnEdit);
@@ -66,6 +66,20 @@ async function loadTasks(ul) {
 
     btnDelete.addEventListener('click', () => {
       deleteTask(data.id, ul);
+    })
+
+    li.addEventListener('click', (e) => {
+      if (e.target.nodeName == 'LI') {
+        if (e.target.className !== 'inactive') {
+          li.classList.add('inactive');
+          btnEdit.setAttribute('disabled', '');
+          btnDelete.setAttribute('disabled', '');
+        } else {
+          li.classList.remove('inactive')
+          btnEdit.removeAttribute('disabled');
+          btnDelete.removeAttribute('disabled');
+        }
+      }
     })
   })
 }

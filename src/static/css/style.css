@@ -84,7 +84,7 @@ li div {
   gap: 1rem;
 }
 
-a {
+button {
   text-decoration: none;
   border: none;
   color: unset;
@@ -95,12 +95,17 @@ a {
   cursor: pointer;
 }
 
-li div a:first-child {
+li div button:first-child {
   background-color: rgba(0, 100, 200, .6);
 }
 
-li div a:last-child {
+li div button:last-child {
   background-color: rgba(200, 0, 0, .6);
+}
+
+li div button:disabled {
+  background-color: rgba(50, 50, 50, .5);
+  color: rgba(80, 80, 80, 6);
 }
 
 .modal {
@@ -150,4 +155,9 @@ li div a:last-child {
 
 .modal button:last-child{
   background-color: rgba(200, 0, 0, .6);
+}
+
+#listTasks .inactive {
+  background-color: rgba(40, 40, 40, .8);
+  color: rgba(120, 120, 120, .6);
 }
