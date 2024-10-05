@@ -66,7 +66,7 @@ async function loadTasks(ul) {
     })
 
     btnDelete.addEventListener('click', () => {
-      deleteTask(data.id);
+      deleteTask(data.id, ul);
     })
   })
 }
@@ -131,6 +131,8 @@ function updateName(id) {
 
 }
 
-function deleteTask(id) {
-
+async function deleteTask(id, ul) {
+  await fetch(`/tasks/${id}`, {
+    method: 'DELETE'
+  }).then(loadTasks(ul))
 }
