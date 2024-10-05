@@ -51,7 +51,7 @@ class Task {
   }
 
   deleteTask(id, callback){
-    const deleteT = `delete tasks where id = ${id}`;
+    const deleteT = `delete from ${this._table} where id = ${id}`;
     connection.query(deleteT, (error, data) => {
       if(error) callback(error, null);
       callback(null, data);
