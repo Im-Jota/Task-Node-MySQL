@@ -48,11 +48,14 @@ input:focus {
   outline: none;
 }
 
-form button {
+button {
   border: none;
+  color: unset;
+}
+
+#formTask button {
   padding: 0 1rem;
   background-color: rgba(20, 20, 20, .8);
-  color: unset;
   border-radius: 0 1rem 1rem 0;
 }
 
@@ -135,10 +138,16 @@ li div a:last-child {
   gap: 1rem;
 }
 
-.modal a:first-child {
+.modal button {
+  width: 100%;
+  padding: .6rem;
+  border-radius: .6rem;
+}
+
+.modal button:first-child {
   background-color: rgba(0, 130, 0, .7);
 }
 
-.modal a:last-child{
+.modal button:last-child{
   background-color: rgba(200, 0, 0, .6);
 }

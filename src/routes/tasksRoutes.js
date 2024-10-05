@@ -23,6 +23,7 @@ function tasksRoutes(req, res){
         break;
       case 'DELETE':
         taskController.deleteTask(req, res);
+        break;
     }
   }
 }

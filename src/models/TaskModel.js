@@ -34,7 +34,7 @@ class Task {
   }
 
   updateName(task, id, callback) {
-    const update = 'update task set name = ?, udpate_at = ? where id = ?';
+    const update = 'update task set name = ?, update_at = ? where id = ?';
     const now = new Date();
     connection.query(update, [task, now, id], (error, data) => {
       if (error) callback(error, null);

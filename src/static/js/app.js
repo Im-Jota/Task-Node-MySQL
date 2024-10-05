@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 })
 
-
 function loadComponents(){
   const app = document.getElementById('app');
 
@@ -62,7 +61,7 @@ async function loadTasks(ul) {
     ul.appendChild(li);
 
     btnEdit.addEventListener('click', () => {
-      editTask(data.id);
+      editTask(data.id, ul);
     })
 
     btnDelete.addEventListener('click', () => {
@@ -84,7 +83,7 @@ function createTask(e, ul) {
   task.value = '';
 }
 
-async function editTask (id) {
+async function editTask (id, ul) {
   const app = document.getElementById('app');
   const modal = document.createElement('div');
 
@@ -99,10 +98,10 @@ async function editTask (id) {
 
   const div = document.createElement('div');
   div.innerHTML = `
-  <a href="/tasks/${id}">Update</a>
+  <button type="submit">Update</button>
   `;
 
-  const cancel = document.createElement('a');
+  const cancel = document.createElement('button');
   cancel.innerText = 'Cancel';
 
   div.appendChild(cancel);
@@ -121,14 +120,28 @@ async function editTask (id) {
       closeModal(app, modal);
     }
   })
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const { task } = e.target
+    updateName(id, task.value, ul);
+    closeModal(app, modal);
+  })
 };
 
 function closeModal (app, modal) {
   app.removeChild(modal);
 }
 
-function updateName(id) {
-
+function updateName(id, task, ul) {
+  fetch(`/tasks/${id}`, {
+    method: 'PUT',
+    headers: {'Content-Type':'applications/json'},
+    body: JSON.stringify({name: task})
+  })
+  .then(
+    loadTasks(ul)
+  );
 }
 
 async function deleteTask(id, ul) {
