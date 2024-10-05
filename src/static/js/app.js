@@ -60,6 +60,9 @@ async function loadTasks(ul) {
     li.appendChild(div)
     ul.appendChild(li);
 
+    
+    disabledC(data.id, li, btnEdit, btnDelete, data.state);
+
     btnEdit.addEventListener('click', () => {
       editTask(data.id, ul);
     })
@@ -71,16 +74,36 @@ async function loadTasks(ul) {
     li.addEventListener('click', (e) => {
       if (e.target.nodeName == 'LI') {
         if (e.target.className !== 'inactive') {
-          li.classList.add('inactive');
-          btnEdit.setAttribute('disabled', '');
-          btnDelete.setAttribute('disabled', '');
+          const status = 1;
+          disabledC(data.id, li, btnEdit, btnDelete, status);
         } else {
-          li.classList.remove('inactive')
-          btnEdit.removeAttribute('disabled');
-          btnDelete.removeAttribute('disabled');
+          const status = 0;
+          disabledC(data.id, li, btnEdit, btnDelete, status);
         }
       }
     })
+  })
+}
+
+function disabledC(id, li, btnEdit, btnDelete, status) {
+  if (status == 1){
+    li.classList.add('inactive');
+    btnEdit.setAttribute('disabled', '');
+    btnDelete.setAttribute('disabled', '');
+    is_active(id, status);
+  } else {
+    li.classList.remove('inactive')
+    btnEdit.removeAttribute('disabled');
+    btnDelete.removeAttribute('disabled');
+    is_active(id, status);
+  }
+}
+
+async function is_active(id, status) {
+  await fetch(`/tasks/${id}`, {
+    method: 'PATCH',
+    headers: {'Content-Type': 'applications/json'},
+    body: JSON.stringify({state: status})
   })
 }
 

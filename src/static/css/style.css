@@ -106,6 +106,7 @@ li div button:last-child {
 li div button:disabled {
   background-color: rgba(50, 50, 50, .5);
   color: rgba(80, 80, 80, 6);
+  cursor: auto;
 }
 
 .modal {
